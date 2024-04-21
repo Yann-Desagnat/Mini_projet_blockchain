@@ -1,41 +1,12 @@
 {
 	"compiler": {
-		"version": "0.4.26+commit.4563c3fc"
+		"version": "0.8.25+commit.b61c2a91"
 	},
 	"language": "Solidity",
 	"output": {
 		"abi": [
 			{
-				"constant": true,
 				"inputs": [],
-				"name": "owner",
-				"outputs": [
-					{
-						"name": "",
-						"type": "address"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "newOwner",
-						"type": "address"
-					}
-				],
-				"name": "transferOwnership",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"payable": false,
 				"stateMutability": "nonpayable",
 				"type": "constructor"
 			},
@@ -44,21 +15,54 @@
 				"inputs": [
 					{
 						"indexed": true,
+						"internalType": "address",
 						"name": "previousOwner",
 						"type": "address"
 					},
 					{
 						"indexed": true,
+						"internalType": "address",
 						"name": "newOwner",
 						"type": "address"
 					}
 				],
 				"name": "OwnershipTransferred",
 				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "transferOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
 			}
 		],
 		"devdoc": {
+			"details": "The Ownable contract has an owner address, and provides basic authorization control functions, this simplifies the implementation of \"user permissions\".",
+			"kind": "dev",
 			"methods": {
+				"constructor": {
+					"details": "The Ownable constructor sets the original `owner` of the contract to the sender account."
+				},
 				"transferOwnership(address)": {
 					"details": "Allows the current owner to transfer control of the contract to a newOwner.",
 					"params": {
@@ -66,18 +70,24 @@
 					}
 				}
 			},
-			"title": "Ownable"
+			"title": "Ownable",
+			"version": 1
 		},
 		"userdoc": {
-			"methods": {}
+			"kind": "user",
+			"methods": {},
+			"version": 1
 		}
 	},
 	"settings": {
 		"compilationTarget": {
 			"contracts/Owner.sol": "Ownable"
 		},
-		"evmVersion": "byzantium",
+		"evmVersion": "cancun",
 		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
 		"optimizer": {
 			"enabled": false,
 			"runs": 200
@@ -86,9 +96,11 @@
 	},
 	"sources": {
 		"contracts/Owner.sol": {
-			"keccak256": "0x4558c460dd05bc99359d1af9137e0a782d33ad597ba86b7c361c575653e017ef",
+			"keccak256": "0xdf7c12d0e5e7a54bc5271036ce6322acf25111218ad2cd11e34893d85819ca25",
+			"license": "GPL-3.0",
 			"urls": [
-				"bzzr://5d679c88577ce98e8cdd0460780724500985b6b611909f81ba26347da1d0adab"
+				"bzz-raw://24fe99e9a5b5d545abb5128836ffeb2949c2fd9ca64c427a974ae4deac03cece",
+				"dweb:/ipfs/QmPhC65ozpwvVU2rXhb19hWqgXFyTer4sknqryba8a1gjh"
 			]
 		}
 	},

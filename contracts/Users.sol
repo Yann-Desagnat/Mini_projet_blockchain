@@ -1,12 +1,8 @@
-pragma solidity 0.4.12;
+pragma solidity ^0.8.0;
 
 
 
-/**
- * @title Storage
- * @dev Store & retrieve value in a variable
- * @custom:dev-run-script ./scripts/deploy_with_ethers.ts
- */
+
 contract Users {
 
     struct Actor {
@@ -31,21 +27,25 @@ contract Users {
         Customer // 3
     }
 
-    modifier onlyManufacturer() {
-        require(msg.sender.roles == Manufacturer, "Not authorized operation");
+    modifier onlyManufacturer(id) {
+        for()
+        require(Actor[msg.sender].roles == Role.Manufacturer, "Not authorized operation");
         _;
     }
+
+    
+    
 
      // Array to store users
     Actor[] public users;
 
     // Function to add a user
     function addUser(uint id, string memory name, Role role) public {
-        Actor newUser = Actor(id, name, role);
-        require(msg.sender.roles == Manufacturer && newUser.roles != Supplier, "Cannot add vendor or customer");
-        require(msg.sender.roles == Supplier && newUser.roles != Vendor, "Cannot add vendor or customer");
-        require(msg.sender.roles == Vendor && newUser.roles != Customer, "Cannot add vendor or customer");
-        require(msg.sender.roles != Customer, "Cannot add a user");
+        Actor memory newUser = Actor(id, name, role);
+        require(msg.sender.roles == Role.Manufacturer && newUser.roles != Role.Supplier, "Cannot add vendor or customer");
+        require(msg.sender.roles == Role.Supplier && newUser.roles != Role.Vendor, "Cannot add vendor or customer");
+        require(msg.sender.roles == Role.Vendor && newUser.roles != Role.Customer, "Cannot add vendor or customer");
+        require(msg.sender.roles != Role.Customer, "Cannot add a user");
         users.push(newUser);
     }
 
