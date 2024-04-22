@@ -16,7 +16,7 @@ contract Product is Ownable, Users {
     Actor storage currentActor = actors[msg.sender];
         Role currentRole = currentActor.roles;
         require(currentRole == Role.Manufacturer, "Not authorized operation");
-        require(!isProductIdExists(products.length), "Product ID already exists");
+        require(!isProductIdExists(products.length+1), "Product ID already exists");
         // Create a new product and add it to the array
         products.push(Products(products.length+1, nameProduct, nbBatch, nbProductsPerBatch, msg.sender, block.timestamp));
     }
@@ -38,14 +38,14 @@ contract Product is Ownable, Users {
         Role role = newActor.roles;
         if(msg.sender != owner){
         if(currentRole == Role.Manufacturer && role != Role.Supplier){revert("Cannot sell to manufacturer or customer or vendor");}
-        if(currentRole == Role.Supplier && role != Role.Vendor){revert( "Cannot add manufacturer or supplier or customer");}
-        if(currentRole == Role.Vendor && role != Role.Customer){revert( "Cannot add manufacturer or supplier or vendor");}
-        if(currentRole == Role.Customer) {revert("Cannot add an actor");}
+        if(currentRole == Role.Supplier && role != Role.Vendor){revert( "Cannot sell to manufacturer or supplier or customer");}
+        if(currentRole == Role.Vendor && role != Role.Customer){revert( "Cannot sell to manufacturer or supplier or vendor");}
+        if(currentRole == Role.Customer) {revert("Cannot sell a product");}
         }
         require(products[_productId-1].id != 0, "Product does not exist");
         require(products[_productId-1].lastOwner == msg.sender, "You are not the owner of this product");
         products[_productId-1].lastOwner = _newOwner;
-
+        products[_productId-1].buyingDate = block.timestamp;
         }
 
     function seeAllProdducts() public view returns( Products[] memory productList) {

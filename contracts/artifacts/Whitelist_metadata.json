@@ -164,19 +164,19 @@
 			]
 		},
 		"contracts/Products.sol": {
-			"keccak256": "0xb1a25389be1f34d1fc2fcac89d5082430ffc26273eb887661e71ee1622d89eb6",
+			"keccak256": "0x1f466f99830edde2fbffc25d036d32e47eaa6b82d51d41f1b457e11bf0bba175",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://ad6ad48a98d8808934db2440ff360aa4763182a787b08992b4b3484c9a2c5bc8",
-				"dweb:/ipfs/QmNzmoeYUqx9hPJKRMjRokGxruoeR7G9HHvtqwFJHhs7jg"
+				"bzz-raw://b3b2411c0dafb4e1b81f0e0111855f1f98858d45bf0cd8db40feb3394e11e712",
+				"dweb:/ipfs/QmNPGFEvE4dqhPQYjcHS6LaTVeC7xcX2cZJ8cPJHBJJrdT"
 			]
 		},
 		"contracts/Users.sol": {
-			"keccak256": "0x85ba9152e423d62ec90564d3ede2ebe64d7008ce484d761326a1430ee2f0fd88",
+			"keccak256": "0xb7f859c09e4a3ae2c7621b83f13cd28e45f5a4378759aaa66715caed66f5d07d",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://1a910012d77619016e378e9cec7b90c883316f2e05e6f621eff5d0adf73e604d",
-				"dweb:/ipfs/QmTAKpUmRs7XuB3CvvKN1MQ5NP2kSTGNp9K63gD8vEQAER"
+				"bzz-raw://1d569f646fa91c7acc6b263ae15e042d6bdb80a1e8c0973b4aa4e6024b8a0225",
+				"dweb:/ipfs/QmTSb5kQ7AjpPkZVpRXEouPPSijbSMPbRir9HFoXmsTtx5"
 			]
 		},
 		"contracts/WhiteList.sol": {

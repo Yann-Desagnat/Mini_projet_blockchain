@@ -9,25 +9,32 @@
 				"anonymous": false,
 				"inputs": [
 					{
-						"indexed": false,
-						"internalType": "uint256",
-						"name": "productId",
-						"type": "uint256"
-					},
-					{
-						"indexed": false,
+						"indexed": true,
 						"internalType": "address",
-						"name": "from",
-						"type": "address"
-					},
-					{
-						"indexed": false,
-						"internalType": "address",
-						"name": "to",
+						"name": "_beneficiary",
 						"type": "address"
 					}
 				],
-				"name": "ProductTransferred",
+				"name": "AddedBeneficiary",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "previousOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipTransferred",
 				"type": "event"
 			},
 			{
@@ -57,11 +64,6 @@
 			{
 				"inputs": [
 					{
-						"internalType": "uint256",
-						"name": "id",
-						"type": "uint256"
-					},
-					{
 						"internalType": "string",
 						"name": "nameProduct",
 						"type": "string"
@@ -78,6 +80,19 @@
 					}
 				],
 				"name": "addProduct",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_beneficiaries",
+						"type": "address"
+					}
+				],
+				"name": "addToWhitelist",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -106,14 +121,8 @@
 				"type": "function"
 			},
 			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"name": "productIds",
+				"inputs": [],
+				"name": "getUsersCount",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -122,6 +131,152 @@
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "products",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "nameProduct",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "nbBatch",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "nbProductsPerBatch",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "lastOwner",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "buyingDate",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_beneficiary",
+						"type": "address"
+					}
+				],
+				"name": "removeFromWhitelist",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "seeAllProdducts",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "id",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string",
+								"name": "nameProduct",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "nbBatch",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "nbProductsPerBatch",
+								"type": "uint256"
+							},
+							{
+								"internalType": "address",
+								"name": "lastOwner",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "buyingDate",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct Users.Products[]",
+						"name": "productList",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "transferOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_productId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "_newOwner",
+						"type": "address"
+					}
+				],
+				"name": "transferProductOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -142,11 +297,49 @@
 				],
 				"stateMutability": "view",
 				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "whitelist",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
 			}
 		],
 		"devdoc": {
 			"kind": "dev",
-			"methods": {},
+			"methods": {
+				"addToWhitelist(address)": {
+					"details": "Adds list of addresses to whitelist. Not overloaded due to limitations with truffle testing.",
+					"params": {
+						"_beneficiaries": "Addresses to be added to the whitelist"
+					}
+				},
+				"removeFromWhitelist(address)": {
+					"details": "Removes single address from whitelist.",
+					"params": {
+						"_beneficiary": "Address to be removed to the whitelist"
+					}
+				},
+				"transferOwnership(address)": {
+					"details": "Allows the current owner to transfer control of the contract to a newOwner.",
+					"params": {
+						"newOwner": "The address to transfer ownership to."
+					}
+				}
+			},
 			"version": 1
 		},
 		"userdoc": {
@@ -180,27 +373,27 @@
 			]
 		},
 		"contracts/Products.sol": {
-			"keccak256": "0x9bcb111c4e804ff786b871ffd77e984a2a061345bd9354b3edd1632bcb0b160b",
+			"keccak256": "0x4111bc10332e6e25e8e0bbe54640df0bd36e968efc038e73f5a47c82e7f006de",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://bd77c90a9a7096f56cd64f71cc557cab3b4383308f4711dbbf4d5d1448af2ab2",
-				"dweb:/ipfs/QmadVv9xVN3ypd2HgnqJPEuMBkaoCufeFgBrK1NezNEHw1"
+				"bzz-raw://6b9b6fe5b2e4ca967242b6724600e9af8b495e48ff29269b305b1a030d191e58",
+				"dweb:/ipfs/QmP8w1Btgx7EzuvzHAP6qm4XCFVop1Wm7qcc2nfq7a4dVt"
 			]
 		},
 		"contracts/Users.sol": {
-			"keccak256": "0x4aac526611df9d8ec90f3d0da24a5a4ac1f1f78c8e4cc5e742cdcc05b8f678ac",
+			"keccak256": "0xb7f859c09e4a3ae2c7621b83f13cd28e45f5a4378759aaa66715caed66f5d07d",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://a4f8d8123488c05c2ed0bbc6e34e5b832459a08fe3cf77307c0b57b2d8e584fc",
-				"dweb:/ipfs/QmcwuRJV1FDJq84STjzMykNuFinWTMG3C2E9UaaupWDmYs"
+				"bzz-raw://1d569f646fa91c7acc6b263ae15e042d6bdb80a1e8c0973b4aa4e6024b8a0225",
+				"dweb:/ipfs/QmTSb5kQ7AjpPkZVpRXEouPPSijbSMPbRir9HFoXmsTtx5"
 			]
 		},
 		"contracts/WhiteList.sol": {
-			"keccak256": "0x190091ff97e22153b94016721521a996cb9672d8c8722544ee78a72cca2fdaef",
+			"keccak256": "0xc25fdef5d579a02a8d3c856de67796576aba85e1b5b19060889ce3d12a62c39f",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://d5acf8a7af3cb040a59a135fe5a9b680ff3c185055cd0ee97358568ff12755df",
-				"dweb:/ipfs/QmZFF8m82XT2KtHSpg354voHj9C6KBfaNuoxiLVLHhqL82"
+				"bzz-raw://f39b2f90bcd901fd875fbd597b7f9e7e5323e8ce46a906133ae3bc65d7ed6b13",
+				"dweb:/ipfs/QmcFcA6eQpWsrDhZ3aG34ExopRM1iuNnY4ukAfTUBFrvxR"
 			]
 		}
 	},

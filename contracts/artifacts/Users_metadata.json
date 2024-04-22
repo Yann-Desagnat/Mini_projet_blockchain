@@ -11,6 +11,19 @@
 					{
 						"indexed": true,
 						"internalType": "address",
+						"name": "_beneficiary",
+						"type": "address"
+					}
+				],
+				"name": "AddedBeneficiary",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
 						"name": "previousOwner",
 						"type": "address"
 					},
@@ -22,6 +35,31 @@
 					}
 				],
 				"name": "OwnershipTransferred",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "id",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "enum Users.Role",
+						"name": "role",
+						"type": "uint8"
+					}
+				],
+				"name": "actorCast",
 				"type": "event"
 			},
 			{
@@ -46,6 +84,19 @@
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_beneficiaries",
+						"type": "address"
+					}
+				],
+				"name": "addToWhitelist",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -101,6 +152,19 @@
 				"inputs": [
 					{
 						"internalType": "address",
+						"name": "_beneficiary",
+						"type": "address"
+					}
+				],
+				"name": "removeFromWhitelist",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
 						"name": "newOwner",
 						"type": "address"
 					}
@@ -128,11 +192,42 @@
 				],
 				"stateMutability": "view",
 				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "whitelist",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
 			}
 		],
 		"devdoc": {
 			"kind": "dev",
 			"methods": {
+				"addToWhitelist(address)": {
+					"details": "Adds list of addresses to whitelist. Not overloaded due to limitations with truffle testing.",
+					"params": {
+						"_beneficiaries": "Addresses to be added to the whitelist"
+					}
+				},
+				"removeFromWhitelist(address)": {
+					"details": "Removes single address from whitelist.",
+					"params": {
+						"_beneficiary": "Address to be removed to the whitelist"
+					}
+				},
 				"transferOwnership(address)": {
 					"details": "Allows the current owner to transfer control of the contract to a newOwner.",
 					"params": {
@@ -172,12 +267,28 @@
 				"dweb:/ipfs/QmPhC65ozpwvVU2rXhb19hWqgXFyTer4sknqryba8a1gjh"
 			]
 		},
-		"contracts/Users.sol": {
-			"keccak256": "0x496244d3c16da988acc258d5ec3034b8bcc3fce9349c8e14712d66e749f5b17c",
+		"contracts/Products.sol": {
+			"keccak256": "0x10cc114f368c2eb48312d02bc542d5a534ba3b991355941e20b50abcf7c24253",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://dd58fd6a381ceec9e3ef82a41f3c506a7977cc75be0fba7ec3857eb09cca2629",
-				"dweb:/ipfs/Qmc7PCzwBV9cZeD3ahXXo9oAmbK55E8tCJYkZ1qtqDHYSZ"
+				"bzz-raw://56fd2d9644ca43e466fa4d347dcc5a47543cb37b831dfc194c83cf3592a8f137",
+				"dweb:/ipfs/QmVpFEnJ2uvGpnVkRPVMB5gpjdrzDSeCpcv5AiPN2saWc6"
+			]
+		},
+		"contracts/Users.sol": {
+			"keccak256": "0xe62b186b17b61da83c91805197f97aed4fb1dd5dfb606e266f5873581952471e",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://cf2cb41e80330652fc1fda930161e33d7ba820c3bbc4c7d31d43f81abee1a1cb",
+				"dweb:/ipfs/QmNjNwNhykxLdUkUMVLsntwLLzKbKtfbSFFrnA9WGtiwjx"
+			]
+		},
+		"contracts/WhiteList.sol": {
+			"keccak256": "0xc25fdef5d579a02a8d3c856de67796576aba85e1b5b19060889ce3d12a62c39f",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://f39b2f90bcd901fd875fbd597b7f9e7e5323e8ce46a906133ae3bc65d7ed6b13",
+				"dweb:/ipfs/QmcFcA6eQpWsrDhZ3aG34ExopRM1iuNnY4ukAfTUBFrvxR"
 			]
 		}
 	},

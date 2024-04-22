@@ -33,7 +33,8 @@ contract Users is Ownable, Whitelist {
 
     mapping(address => Actor) public actors;
 
-    
+    event actorCast(address id, string name, Role role);
+
 
      // Array to store users
     address[] public users;
@@ -42,12 +43,15 @@ contract Users is Ownable, Whitelist {
     function addUser(address id, string memory name, Role role) public {
         Actor memory newUser = Actor(name, role);
         Actor memory currentActor = actors[msg.sender];
+        emit actorCast(msg.sender, actors[msg.sender].name, actors[msg.sender].roles);
+        emit actorCast(msg.sender, actors[msg.sender].name, actors[msg.sender].roles);
+
         Role currentRole = currentActor.roles;
         if(msg.sender != owner){
         if(currentRole == Role.Manufacturer && role != Role.Supplier){revert("Cannot add manufacturer or customer or supplier");}
         if(currentRole == Role.Supplier && newUser.roles != Role.Vendor){revert( "Cannot add manufacturer or supplier or customer");}
         if(currentRole == Role.Vendor && newUser.roles != Role.Customer){revert( "Cannot add manufacturer or supplier or vendor");}
-        if(currentRole != Role.Customer) {revert("Cannot add an actor");}
+        if(currentRole == Role.Customer) {revert("Cannot add an actor");}
         }
         actors[id] = Actor(name, role);
         users.push(id);
