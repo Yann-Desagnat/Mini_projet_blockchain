@@ -6,11 +6,6 @@
 	"output": {
 		"abi": [
 			{
-				"inputs": [],
-				"stateMutability": "nonpayable",
-				"type": "constructor"
-			},
-			{
 				"anonymous": false,
 				"inputs": [
 					{
@@ -28,6 +23,66 @@
 				],
 				"name": "OwnershipTransferred",
 				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "actors",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "enum Users.Role",
+						"name": "roles",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "id",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "enum Users.Role",
+						"name": "role",
+						"type": "uint8"
+					}
+				],
+				"name": "addUser",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getUsersCount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
 			},
 			{
 				"inputs": [],
@@ -54,15 +109,30 @@
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "users",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
 			}
 		],
 		"devdoc": {
-			"details": "The Ownable contract has an owner address, and provides basic authorization control functions, this simplifies the implementation of \"user permissions\".",
 			"kind": "dev",
 			"methods": {
-				"constructor": {
-					"details": "The Ownable constructor sets the original `owner` of the contract to the sender account."
-				},
 				"transferOwnership(address)": {
 					"details": "Allows the current owner to transfer control of the contract to a newOwner.",
 					"params": {
@@ -70,7 +140,6 @@
 					}
 				}
 			},
-			"title": "Ownable",
 			"version": 1
 		},
 		"userdoc": {
@@ -81,7 +150,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/Owner.sol": "Ownable"
+			"contracts/Users.sol": "Users"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -101,6 +170,14 @@
 			"urls": [
 				"bzz-raw://24fe99e9a5b5d545abb5128836ffeb2949c2fd9ca64c427a974ae4deac03cece",
 				"dweb:/ipfs/QmPhC65ozpwvVU2rXhb19hWqgXFyTer4sknqryba8a1gjh"
+			]
+		},
+		"contracts/Users.sol": {
+			"keccak256": "0x496244d3c16da988acc258d5ec3034b8bcc3fce9349c8e14712d66e749f5b17c",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://dd58fd6a381ceec9e3ef82a41f3c506a7977cc75be0fba7ec3857eb09cca2629",
+				"dweb:/ipfs/Qmc7PCzwBV9cZeD3ahXXo9oAmbK55E8tCJYkZ1qtqDHYSZ"
 			]
 		}
 	},

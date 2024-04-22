@@ -1,18 +1,22 @@
+// SPDX-License-Identifier: GPL-3.0
+
 pragma solidity ^0.8.0;
 
+import "./Owner.sol";
+import "./WhiteList.sol";
+import "./Products.sol";
 
 
 
-contract Users {
+contract Users is Ownable, Whitelist {
 
     struct Actor {
-        uint id;
         string name; 
         Role roles;
     }
 
     struct Products {
-        address id;
+        uint id;
         string nameProduct;   
         uint nbBatch;
         uint nbProductsPerBatch;
@@ -27,30 +31,31 @@ contract Users {
         Customer // 3
     }
 
-    modifier onlyManufacturer(id) {
-        for()
-        require(Actor[msg.sender].roles == Role.Manufacturer, "Not authorized operation");
-        _;
-    }
+    mapping(address => Actor) public actors;
 
-    
     
 
      // Array to store users
-    Actor[] public users;
+    address[] public users;
 
     // Function to add a user
-    function addUser(uint id, string memory name, Role role) public {
-        Actor memory newUser = Actor(id, name, role);
-        require(msg.sender.roles == Role.Manufacturer && newUser.roles != Role.Supplier, "Cannot add vendor or customer");
-        require(msg.sender.roles == Role.Supplier && newUser.roles != Role.Vendor, "Cannot add vendor or customer");
-        require(msg.sender.roles == Role.Vendor && newUser.roles != Role.Customer, "Cannot add vendor or customer");
-        require(msg.sender.roles != Role.Customer, "Cannot add a user");
-        users.push(newUser);
+    function addUser(address id, string memory name, Role role) public {
+        Actor memory newUser = Actor(name, role);
+        Actor memory currentActor = actors[msg.sender];
+        Role currentRole = currentActor.roles;
+        if(msg.sender != owner){
+        if(currentRole == Role.Manufacturer && role != Role.Supplier){revert("Cannot add manufacturer or customer or supplier");}
+        if(currentRole == Role.Supplier && newUser.roles != Role.Vendor){revert( "Cannot add manufacturer or supplier or customer");}
+        if(currentRole == Role.Vendor && newUser.roles != Role.Customer){revert( "Cannot add manufacturer or supplier or vendor");}
+        if(currentRole != Role.Customer) {revert("Cannot add an actor");}
+        }
+        actors[id] = Actor(name, role);
+        users.push(id);
+        addToWhitelist(id);
     }
 
     // Function to get the total number of users
-    function getTotalUsers() public returns (uint) {
+    function getUsersCount() public view returns (uint) {
         return users.length;
     }
 }

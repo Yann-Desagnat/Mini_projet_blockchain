@@ -1,0 +1,208 @@
+{
+	"compiler": {
+		"version": "0.8.0+commit.c7dfd78e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "productId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					}
+				],
+				"name": "ProductTransferred",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "actors",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "enum Users.Role",
+						"name": "roles",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "nameProduct",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "nbBatch",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "nbProductsPerBatch",
+						"type": "uint256"
+					}
+				],
+				"name": "addProduct",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "id",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "enum Users.Role",
+						"name": "role",
+						"type": "uint8"
+					}
+				],
+				"name": "addUser",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "productIds",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "users",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/Products.sol": "Product"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/Owner.sol": {
+			"keccak256": "0xdf7c12d0e5e7a54bc5271036ce6322acf25111218ad2cd11e34893d85819ca25",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://24fe99e9a5b5d545abb5128836ffeb2949c2fd9ca64c427a974ae4deac03cece",
+				"dweb:/ipfs/QmPhC65ozpwvVU2rXhb19hWqgXFyTer4sknqryba8a1gjh"
+			]
+		},
+		"contracts/Products.sol": {
+			"keccak256": "0x9bcb111c4e804ff786b871ffd77e984a2a061345bd9354b3edd1632bcb0b160b",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://bd77c90a9a7096f56cd64f71cc557cab3b4383308f4711dbbf4d5d1448af2ab2",
+				"dweb:/ipfs/QmadVv9xVN3ypd2HgnqJPEuMBkaoCufeFgBrK1NezNEHw1"
+			]
+		},
+		"contracts/Users.sol": {
+			"keccak256": "0x4aac526611df9d8ec90f3d0da24a5a4ac1f1f78c8e4cc5e742cdcc05b8f678ac",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://a4f8d8123488c05c2ed0bbc6e34e5b832459a08fe3cf77307c0b57b2d8e584fc",
+				"dweb:/ipfs/QmcwuRJV1FDJq84STjzMykNuFinWTMG3C2E9UaaupWDmYs"
+			]
+		},
+		"contracts/WhiteList.sol": {
+			"keccak256": "0x190091ff97e22153b94016721521a996cb9672d8c8722544ee78a72cca2fdaef",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://d5acf8a7af3cb040a59a135fe5a9b680ff3c185055cd0ee97358568ff12755df",
+				"dweb:/ipfs/QmZFF8m82XT2KtHSpg354voHj9C6KBfaNuoxiLVLHhqL82"
+			]
+		}
+	},
+	"version": 1
+}

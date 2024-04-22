@@ -1,6 +1,8 @@
 pragma solidity ^0.8.0;
 
 import "./Owner.sol";
+import "./Products.sol";
+
 
 // SPDX-License-Identifier: GPL-3.0
 
@@ -21,11 +23,11 @@ contract Whitelist is Ownable{
      * @dev Adds list of addresses to whitelist. Not overloaded due to limitations with truffle testing.
      * @param _beneficiaries Addresses to be added to the whitelist
      */
-    function addToWhitelist(address[] memory _beneficiaries) public onlyOwner {
-      for (uint256 i = 0; i < _beneficiaries.length; i++) {
-        whitelist[_beneficiaries[i]] = true;
+    function addToWhitelist(address _beneficiaries) public  {
+    
+        whitelist[_beneficiaries] = true;
       }
-    }
+    
 
     /**
      * @dev Removes single address from whitelist.
@@ -33,5 +35,11 @@ contract Whitelist is Ownable{
      */
     function removeFromWhitelist(address _beneficiary) public onlyOwner {
       whitelist[_beneficiary] = false;
+    }
+
+    modifier onlyWhitelisted()
+    {
+      require(whitelist[msg.sender] == true, "Is not whitelisted" );
+      _;
     }
   }
