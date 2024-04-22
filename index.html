@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users Contract Interface</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Users Contract Interaction</h1>
+        <div>
+            <input type="text" id="userAddress" placeholder="User Ethereum Address">
+            <input type="text" id="userName" placeholder="User Name">
+            <select id="userRole">
+                <option value="0">Manufacturer</option>
+                <option value="1">Supplier</option>
+                <option value="2">Vendor</option>
+                <option value="3">Customer</option>
+            </select>
+            <button onclick="addUser()">Add User</button>
+        </div>
+        <div>
+            <button onclick="getUsersCount()">Get Users Count</button>
+            <span id="usersCount">Total Users: 0</span>
+        </div>
+        <div>
+            <input type="text" id="productInfo" placeholder="Product Information">
+            <button onclick="addProduct()">Add Product</button>
+        </div>
+        <div>
+            <input type="text" id="newOwnerAddress" placeholder="New Owner Ethereum Address">
+            <button onclick="transferOwnership()">Transfer Ownership</button>
+        </div>
+        <div id="status"></div>
+    </div>
+    <script src="web3.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
